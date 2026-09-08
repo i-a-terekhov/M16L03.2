@@ -1,15 +1,33 @@
 <script setup>
 import Count from './components/Count.vue'
 
+const items = [
+  {
+    number: 1,
+    initialCount: 10,
+  },
+  {
+    number: 2,
+    initialCount: 20,
+  },
+  {
+    number: 3,
+    initialCount: 30,
+  },
+  {
+    number: 4,
+    initialCount: 40,
+  },
+]
+
 function onCountChangeHandler(countNumber, newCountValue) {
   console.log('Value for ' + countNumber + ' changed to ' + newCountValue)
 }
 </script>
 
 <template>
-  <Count v-bind:initial-count="10" v-on:on-count-change="onCountChangeHandler" v-bind:number="1"/>
-  <Count :initial-count="20" @on-count-change="onCountChangeHandler" :number="2"/>
-  <Count :initial-count="30" @on-count-change="onCountChangeHandler" :number="3"/>
+  <Count v-for="item in items" :initial-count="item.initialCount" @on-count-change="onCountChangeHandler"
+         :number="item.number" key="item.number" />
 </template>
 
 <style scoped>
