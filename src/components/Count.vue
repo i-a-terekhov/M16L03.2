@@ -1,19 +1,10 @@
 <script setup>
-import { ref, onMounted, defineProps, defineEmits } from 'vue';
-
-const props = defineProps(["initialCount", "number"]);
+const props = defineProps(["number", "count"]);
 const emit = defineEmits(["onCountChange"]);
 
-const count = ref(props.initialCount || 0);
-
 function changeCount() {
-  count.value++;
-  emit('onCountChange', props.number, count.value);
+  emit('onCountChange', props.count + 1);
 }
-
-onMounted(() => {
-  console.log('Component mounted. Count is ' + count.value);
-});
 </script>
 
 <template>
