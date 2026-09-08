@@ -18,16 +18,31 @@ const items = [
     number: 4,
     initialCount: 40,
   },
-]
+];
 
 function onCountChangeHandler(countNumber, newCountValue) {
   console.log('Value for ' + countNumber + ' changed to ' + newCountValue)
 }
+
+function addNewCount() {
+  const number = items.length > 0 ? (items[items.length - 1].number + 1) : 1;
+
+  items.push({
+    number: number,
+  });
+
+  console.log(items);
+}
+
 </script>
 
 <template>
   <Count v-for="item in items" :initial-count="item.initialCount" @on-count-change="onCountChangeHandler"
-         :number="item.number" key="item.number" />
+         :number="item.number" key="item.number"/>
+
+  <div>
+    <button @click="addNewCount">Add new Count</button>
+  </div>
 </template>
 
 <style scoped>

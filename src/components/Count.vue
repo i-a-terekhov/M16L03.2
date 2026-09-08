@@ -4,7 +4,7 @@ import { ref, onMounted, defineProps, defineEmits } from 'vue';
 const props = defineProps(["initialCount", "number"]);
 const emit = defineEmits(["onCountChange"]);
 
-const count = ref(props.initialCount);
+const count = ref(props.initialCount || 0);
 
 function changeCount() {
   count.value++;
