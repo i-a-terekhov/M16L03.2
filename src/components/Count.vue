@@ -1,6 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue';
-const count = ref(3);
+import { ref, onMounted, defineProps } from 'vue';
+
+const props = defineProps(["initialCount"]);
+
+const count = ref(props.initialCount);
 
 function changeCount() {
   count.value++;
