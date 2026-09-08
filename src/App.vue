@@ -1,6 +1,6 @@
 <script setup>
 import Count from './components/Count.vue'
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const count = ref(3);
 
@@ -32,6 +32,10 @@ function addNewCount() {
 
   console.log(items.value);
 }
+
+watch(count, (newValue, oldValue) => {
+  console.log('Count value changed from ' + oldValue + ' to ' + newValue);
+})
 
 </script>
 
