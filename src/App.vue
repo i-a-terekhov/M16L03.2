@@ -1,7 +1,8 @@
 <script setup>
 import Count from './components/Count.vue'
+import { ref } from 'vue';
 
-const items = [
+const items = ref([
   {
     number: 1,
     initialCount: 10,
@@ -18,20 +19,20 @@ const items = [
     number: 4,
     initialCount: 40,
   },
-];
+]);
 
 function onCountChangeHandler(countNumber, newCountValue) {
   console.log('Value for ' + countNumber + ' changed to ' + newCountValue)
 }
 
 function addNewCount() {
-  const number = items.length > 0 ? (items[items.length - 1].number + 1) : 1;
+  const number = items.value.length > 0 ? (items.value[items.value.length - 1].number + 1) : 1;
 
-  items.push({
+  items.value.push({
     number: number,
   });
 
-  console.log(items);
+  console.log(items.value);
 }
 
 </script>
