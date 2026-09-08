@@ -11,15 +11,12 @@ function changeCount() {
   emit('onCountChange', props.count + (!isNaN(intData) ? intData : 1));
 }
 
-function changeData(event) {
-  data.value = event.target.value;
-}
 </script>
 
 <template>
   <div>
     <p>Count is {{ count }}</p>
-    <input type="text" :value="data" @input="changeData"/>
+    <input type="text" v-model="data" />
     <button @click="changeCount">Click me</button>
   </div>
 </template>
